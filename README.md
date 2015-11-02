@@ -12,3 +12,8 @@ Completed:
 * [x] Optional: Remembering the bill amount across app restarts (if <10mins)
 * [x] Optional: Using locale-specific currency and currency thousands separators.
 * [x] Optional: Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
+
+
+Notes: This only works for iPhone 5 or 5s in Portrait orientation. I did not spend any time making the app look right in other screen sizes and Landscape orientation.
+
+![Video Walkthrough](screenshot.gif)
