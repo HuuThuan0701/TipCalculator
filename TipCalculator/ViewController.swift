@@ -22,11 +22,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        tipLabel.text = "$0.0"
-        totalLabel.text = "$0.0"
+        
+        let numberFormater = NSNumberFormatter()
+        numberFormater.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        
+        tipLabel.text = numberFormater.stringFromNumber(0)
+        totalLabel.text = tipLabel.text
+        peopleShare.text = totalLabel.text
         tipPercentageLabel.text = "10%"
         billField.becomeFirstResponder()
-        peopleShare.text = totalLabel.text
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,11 +52,14 @@ class ViewController: UIViewController {
         let people = Int(peopleStepper.value)
         let peopleEach = round(total / Double(people) * 100) / 100
         
-        tipLabel.text = "$\(tip)"
-        totalLabel.text = "$\(total)"
+        let numberFormater = NSNumberFormatter()
+        numberFormater.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        
+        tipLabel.text = numberFormater.stringFromNumber(tip)
+        totalLabel.text = numberFormater.stringFromNumber(total)
         tipPercentageLabel.text = "\(tipPercentage)%"
         peopleLabel.text = "\(people) People"
-        peopleShare.text = "$\(peopleEach)"
+        peopleShare.text = numberFormater.stringFromNumber(peopleEach)
         
     }
 }
