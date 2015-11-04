@@ -18,6 +18,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var peopleLabel: UILabel!
     @IBOutlet weak var peopleShare: UILabel!
     @IBOutlet weak var peopleStepper: UIStepper!
+
+    var defaultPercent = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,17 @@ class ViewController: UIViewController {
         tipPercentageLabel.text = "10%"
         billField.becomeFirstResponder()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateDefaultPercentage:", name: "passingObjectsFromSettingNotification", object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.view.endEditing(true)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -39,6 +52,10 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onEditingChanged(sender: AnyObject) {
+        calculateTip()
+    }
+    
+    func calculateTip(){
         let tipPercentage = Int(round(tipPercentageSlider.value))
         
         var billAmount = Double(billField.text!)
@@ -60,7 +77,33 @@ class ViewController: UIViewController {
         tipPercentageLabel.text = "\(tipPercentage)%"
         peopleLabel.text = "\(people) People"
         peopleShare.text = numberFormater.stringFromNumber(peopleEach)
+    }
+    
+    func updateDefaultPercentage(notif:NSNotification) {
         
+        defaultPercent = (notif.object?.integerValue)!
+        let receivedValue = notif.object?.floatValue
+        if let theReceivedValue = receivedValue {
+            
+            tipPercentageLabel.text = "\(Int(theReceivedValue))%"
+            if theReceivedValue > tipPercentageSlider.maximumValue {
+                tipPercentageSlider.maximumValue = theReceivedValue
+            }
+            tipPercentageSlider.value = theReceivedValue
+        }
+        
+        calculateTip()
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showSettings" {
+            let settingViewController = segue.destinationViewController as! SettingViewController
+            if defaultPercent == 0 {
+                defaultPercent = Int(tipPercentageSlider.value)
+            }
+            settingViewController.defaultPercentValue = defaultPercent
+        }
     }
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ugt-vQ-Lk9">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
@@ -78,7 +78,7 @@
                                     <navigationItem title="TipCalculator" id="vmI-Hy-naZ">
                                         <barButtonItem key="rightBarButtonItem" title="Edit" id="CIz-PA-Mca">
                                             <connections>
-                                                <segue destination="kRr-on-V0Y" kind="modal" modalTransitionStyle="flipHorizontal" id="V1t-Ka-Sbd"/>
+                                                <segue destination="kRr-on-V0Y" kind="modal" identifier="showSettings" modalTransitionStyle="flipHorizontal" id="V1t-Ka-Sbd"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -166,12 +166,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="i7s-fF-Tpv"/>
             </objects>
-            <point key="canvasLocation" x="221" y="494"/>
+            <point key="canvasLocation" x="753" y="494"/>
         </scene>
-        <!--View Controller-->
+        <!--Setting View Controller-->
         <scene sceneID="fRM-WZ-aHT">
             <objects>
-                <viewController id="kRr-on-V0Y" sceneMemberID="viewController">
+                <viewController id="kRr-on-V0Y" customClass="SettingViewController" customModule="TipCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7vm-qn-BcV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -185,37 +185,58 @@
                                     <navigationItem title="TipCalculator" id="hzj-x9-ytC">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="w4F-b3-BvF">
                                             <connections>
-                                                <segue destination="BYZ-38-t0r" kind="modal" identifier="mainClicked" modalTransitionStyle="flipHorizontal" id="mwc-p3-CNv"/>
+                                                <action selector="backAction:" destination="kRr-on-V0Y" id="bL3-rO-Cmj"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum tip percentage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nkw-KL-PDe">
-                                <rect key="frame" x="20" y="85" width="186" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default tip percentage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nkw-KL-PDe">
+                                <rect key="frame" x="20" y="85" width="171" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum tip percentage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TaB-fM-BF1">
-                                <rect key="frame" x="20" y="114" width="190" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="Km1-IH-X08">
+                                <rect key="frame" x="222" y="81" width="78" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="qcM-Il-Dkg"/>
+                    <connections>
+                        <outlet property="txtDefaultPercentage" destination="Km1-IH-X08" id="zuu-m8-gfd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgg-hk-dPU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="589" y="494"/>
+            <point key="canvasLocation" x="1258" y="494"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="e4b-Th-PRF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ugt-vQ-Lk9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ct5-4O-duv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="09E-zX-Sjk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f8d-yw-bc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="221" y="494"/>
         </scene>
     </scenes>
 </document>
