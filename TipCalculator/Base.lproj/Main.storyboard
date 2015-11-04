@@ -76,7 +76,11 @@
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem title="TipCalculator" id="vmI-Hy-naZ">
-                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="CIz-PA-Mca"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Edit" id="CIz-PA-Mca">
+                                            <connections>
+                                                <segue destination="kRr-on-V0Y" kind="modal" modalTransitionStyle="flipHorizontal" id="V1t-Ka-Sbd"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -147,6 +151,7 @@
                             <outletCollection property="gestureRecognizers" destination="i7s-fF-Tpv" appends="YES" id="yvv-Ea-99r"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" id="odG-J9-gPq"/>
                     <connections>
                         <outlet property="billField" destination="H2m-xB-HUk" id="D5m-UQ-mOl"/>
                         <outlet property="peopleLabel" destination="lfa-bm-Dh9" id="9L8-1E-sxw"/>
@@ -161,7 +166,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="i7s-fF-Tpv"/>
             </objects>
-            <point key="canvasLocation" x="202" y="494"/>
+            <point key="canvasLocation" x="221" y="494"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="fRM-WZ-aHT">
+            <objects>
+                <viewController id="kRr-on-V0Y" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7vm-qn-BcV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" id="ZbH-Zc-FZ4">
+                                <rect key="frame" x="0.0" y="14" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem title="TipCalculator" id="hzj-x9-ytC">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="w4F-b3-BvF">
+                                            <connections>
+                                                <segue destination="BYZ-38-t0r" kind="modal" identifier="mainClicked" modalTransitionStyle="flipHorizontal" id="mwc-p3-CNv"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum tip percentage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nkw-KL-PDe">
+                                <rect key="frame" x="20" y="85" width="186" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum tip percentage" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TaB-fM-BF1">
+                                <rect key="frame" x="20" y="114" width="190" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qcM-Il-Dkg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hgg-hk-dPU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="589" y="494"/>
         </scene>
     </scenes>
 </document>
